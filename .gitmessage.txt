@@ -1,0 +1,14 @@
+# headr: <type>(<scope>): <subject>
+# - type: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+# - scope: can be empty
+# - subject: start with verb (such as 'change'), 50-character line
+#
+# body: 72-character wrapped. This should answer:
+# * Why was this change necessary?
+# * How does it address the problem?
+# * Are there any side effects?
+#
+# footer:
+# - Include a link to the issue. Closes #123, #234
+# - BREAKING CHANGE <desc change>
+#

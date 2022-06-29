@@ -267,7 +267,26 @@ autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,pe
 " disable showmatch when use > in php
 au BufWinEnter *.php set mps-=<:>
 
+" https://stackoverflow.com/questions/25227281/how-to-auto-highlight-the-current-word-in-vim
+" Highlight the symbol and its references when holding the cursor."
+function! HighlightWordUnderCursor()
+    let disabled_ft = ["qf", "fugitive", "nerdtree", "gundo", "diff", "fzf", "floaterm"]
+    if &diff || &buftype == "terminal" || index(disabled_ft, &filetype) >= 0
+        return
+    endif
+    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
+        " hi MatchWord cterm=undercurl gui=undercurl guibg=#3b404a
+        hi MatchWord guibg=#575e6b
+        exec 'match' 'MatchWord' '/\V\<'.expand('<cword>').'\>/'
+    else
+        match none
+    endif
+endfunction
 
+augroup MatchWord
+  autocmd!
+  autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
+augroup END
 
 " 加载各种插件的配置, 参考 https://github.com/jdhao/nvim-config
 let s:core_conf_files = [
