@@ -1,0 +1,67 @@
+{
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "git.addGBlameToVirtualText": false,
+  "git.virtualTextPrefix": "👋 ",
+  "smartf.jumpOnTrigger": false,
+  "smartf.wordJump": false,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "cuda",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        "compile_commands.json",
+        ".git/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "highlight": {
+          "lsRanges": true
+        },
+        "client": {
+          "snippetSupport": true
+        },
+        "clang": {
+          "extraArgs": [
+            "-Wall"
+          ]
+        }
+      }
+    }
+  },
+  "translator.engines": [
+    "youdao"
+  ],
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
+  },
+  "smartf.timeout": 3000,
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.telemetry.enable": true,
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.willSaveHandlerTimeout": 1000,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "go",
+    "markdown",
+    "javascript",
+    "typescript",
+    "json",
+    "jsonc",
+    "c++"
+  ]
+}
