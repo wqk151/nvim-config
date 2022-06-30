@@ -234,25 +234,40 @@ inoremap ,, <Esc>la
 " FileType Settings  文件类型设置
 "==========================================
 " 定义函数AutoSetFileHead，自动插入文件头
-autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+autocmd BufNewFile *.sh,*.py,*.go exec ":call AutoSetFileHead()"
 function! AutoSetFileHead()
-    "如果文件类型为.sh文件
     if &filetype == 'sh'
-        call setline(1, "\#!/bin/bash")
+        call setline(1,  "\#!/bin/bash")
+        call append(".",         "\#####################################################")
+        call append(line(".")+1, "\#  > File Name: ".expand("%"))
+        call append(line(".")+2, "\#  > Author: wqk")
+        call append(line(".")+3, "\#  > mail: wqk@datatang.com")
+        call append(line(".")+4, "\#  > Created Time: ".strftime("%c"))
+        call append(line(".")+5, "\#####################################################")
+        call append(line(".")+6, "")
+    elseif &filetype == 'python'
+        call setline(1, "#!/usr/bin/env python")
+        call append(line("."), "# -*- coding:utf-8 -*-")
+        call append(line(".")+1, "\#####################################################")
+        call append(line(".")+2, "\#  > File Name: ".expand("%"))
+        call append(line(".")+3, "\#  > Author: wqk")
+        call append(line(".")+4, "\#  > Mail:  wqk@datatang.com")
+        call append(line(".")+5, "\#  > Created Time: ".strftime("%c"))
+        call append(line(".")+6, "\#  > Version: python 3.7")
+        call append(line(".")+7, "\######################################################")
+        call append(line(".")+8,"")
+    elseif &filetype == 'go'
+        call setline(1, "\//####################################################")
+        call append(line("."),   "\// > File Name: ".expand("%"))
+        call append(line(".")+1, "\// > Author: wqk")
+        call append(line(".")+2, "\// > Mail:  wqk@datatang.com")
+        call append(line(".")+3, "\// > Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\// > Version: gloang 1.14")
+        call append(line(".")+5, "\//######################################################")
+        call append(line(".")+6,"")
     endif
-
-    "如果文件类型为python
-    if &filetype == 'python'
-        call setline(1, "\# -*- coding: utf-8 -*-")
-    endif
-
-    if &filetype == 'c'
-        call setline(1, "\#include <stdio.h>")
-    endif
-
-    normal G
-    normal o
-    normal o
+    "新建文件后，自动定位到文件末尾
+    autocmd BufNewFile * normal G
 endfunc
 
 " 保存python文件时删除多余空格

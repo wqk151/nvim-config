@@ -67,20 +67,6 @@ let g:floaterm_keymap_prev   = '<C-p>'
 " let g:floaterm_keymap_new    = '<C-n>'
 let g:floaterm_keymap_toggle = '<C-t>'
 
-" 使用 f/F 来快速移动 -- 不好用
-" press <esc> to cancel.
-" nmap f <Plug>(coc-smartf-forward)
-" nmap F <Plug>(coc-smartf-backward)
-"
-" 重复上次操作
-" nmap . <Plug>(coc-smartf-repeat)
-" nmap , <Plug>(coc-smartf-repeat-opposite)
-
-augroup Smartf
-  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=pink
-  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
-augroup end
-
 let g:git_messenger_no_default_mappings = v:true
 
 " 使用 gx 在 vim 中间直接打开链接
@@ -103,3 +89,7 @@ let g:vim_markdown_folding_disabled = 1
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'c', 'cpp', 'diff']
 let g:markdown_minlines = 200
+
+" 自动关闭 vim 如果 window 中只有一个 filetree
+" https://github.com/kyazdani42/nvim-tree.lua
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif

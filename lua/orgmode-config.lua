@@ -24,7 +24,7 @@ require('orgmode').setup({
     },
     org={
       org_todo = 't',
-      org_global_cycle = 'X',
+      -- org_global_cycle = 'X',
       org_cycle = 'x',
       org_insert_todo_heading = '<leader>a'
     }
