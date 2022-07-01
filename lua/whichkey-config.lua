@@ -152,5 +152,5 @@ wk.register({
     },
     ["s"] = { ":lua require('spectre').open_visual()<cr>", "search" }
   },
-  q = { "<cmd>q<cr>", "close window" },
+  -- q = { "<cmd>q<cr>", "close window" },
 }, { mode = "v" })

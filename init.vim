@@ -98,19 +98,6 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
-" 显示当前的行号(普通模式为相对)：
-augroup CursorLineOnlyInActiveWindow
-    autocmd!
-    " 离开插入模式时
-    autocmd InsertLeave * setlocal relativenumber signcolumn=auto
-    " 进入插入模式时
-    autocmd InsertEnter * setlocal norelativenumber signcolumn=number
-    " 进入缓冲区后
-    autocmd BufEnter * setlocal cursorline relativenumber signcolumn=auto
-    " 离开缓冲区后
-    autocmd BufLeave * setlocal nocursorline norelativenumber signcolumn=number
-augroup END
-
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 set relativenumber number
 au FocusLost * :set norelativenumber number
@@ -118,14 +105,6 @@ au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set norelativenumber number
 autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
 
 " F2 行号开关，用于鼠标复制代码用
 " 为方便复制，用<F2>开启/关闭行号显示:

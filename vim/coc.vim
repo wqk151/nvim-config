@@ -23,7 +23,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=number
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -128,3 +128,13 @@ nmap <silent> b <Plug>(coc-ci-b)
 
 " https://github.com/fannheyward/coc-pyright/issues/184
 call coc#config("python.pythonPath", "/bin/python3")
+
+" coc-go {{{
+    " Add missing imports on save
+    autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+    " Add tags to struct fields
+    autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+    autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+    " Remove all tags from struct fields
+    autocmd FileType go nmap gtr :CocCommand go.tags.clear<cr>
+" }}}

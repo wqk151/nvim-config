@@ -4,7 +4,7 @@ require('code_runner').setup {
     size = 15,
   },
   filetype = {
-    python = "time python3 $fileName",
+    python = "time cd $dir && python $fileName",
     -- c = "time cd $dir && clang -lpthread -g -lm $fileName -o $fileNameWithoutExt.out  && $dir/$fileNameWithoutExt.out",
     c = "time cd $dir && clang -lpthread -fno-omit-frame-pointer -pg -g -lm $fileName -o $fileNameWithoutExt.out  && $dir/$fileNameWithoutExt.out",
     cpp = "time cd $dir && clang++ -lpthread -g $fileName -o $fileNameWithoutExt.out  && $dir/$fileNameWithoutExt.out",
@@ -12,6 +12,6 @@ require('code_runner').setup {
     sh = "time bash $file",
     rust = "time cargo run",
     r = "time Rscript $fileName",
-    go = "time go run $fileName"
+    go = "time cd $dir && go run $fileName"
   },
 }
