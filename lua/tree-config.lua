@@ -1,9 +1,12 @@
 -- change default mappings
 local list = {
-  { key = {"<CR>", "o", "l", "<2-LeftMouse>"}, action = "edit" },
+  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
   { key = "h",                                 action = "close_node" },
   { key = "p",                                 action = "preview" },
   { key = "<C-r>",                             action = "refresh" },
+  { key = "<C-x>",                             action = "split" },
+  { key = "<C-v>",                             action = "vsplit" },
+  { key = "<C-t>",                             action = "tabnew" },
   { key = "yn",                                action = "copy_name" },
   { key = "yp",                                action = "copy_path" },
   { key = "yy",                                action = "copy_absolute_path" },
